@@ -17,7 +17,6 @@
 	$click.click('click', function() {
 		$(this).html('Peace Out!');
 		$(this).fadeOut(1500);
-		return false;
 	});
 
 	$sub.on('submit', function(e) {
@@ -31,13 +30,16 @@
 	});
 
 	$(document).on('ready', function() {
-		setTimeout(
-			$timeout.fadeIn('slow'),
-			1000
+		setTimeout(function() {
+			$timeout.fadeOut('slow')
+			}, 1000
 		);
 	});
 
+
+	// MY STUFF
 	var items;
+	var random;
 
 	$('#get-button').on('click', function() {
 		$.get(
@@ -45,17 +47,11 @@
 			{data: "quizData"},
 			function (data) {
 				items = data['data'];
-				$.each(items, function (i) {
-					var li = $('<li/>')
-						.addClass('prediction-result')
-						.attr('id', 'prediction-result-' + i)
-						.text(items[i])
-						.appendTo($('#list'));
-				});
+				random = Math.floor(Math.random()*items.length);
+				$('#api-thing').html(items[random]);
 			}
 		);
-		$('#new-button-div').html('<button class="keep">Keep It</button>');
-
+		$('#new-button-div').html('<button id="keep">Keep It</button>');
 
 		$('#get-button').html('Change It!');
 
@@ -63,9 +59,17 @@
 
 	});
 
-	$('.keep').on('click', function(){
-		document.cookie()
-	})
 
+	$('#new-button-div').on('click', '#keep', function () {
+		document.cookie="thingy=" + items[random]
+	});
+	$(document).on('ready', function(){
+		var thingy=document.cookie.split('=')[1];
+
+		if (thingy!=""){
+			$('#api-thing').html(thingy);
+		}
+
+	});
 
 })(jQuery);

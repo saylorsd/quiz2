@@ -44,7 +44,28 @@ button {
 	text-align: center;
 }
 
-ul {
-	list-style: none;
+.second-part {
+	text-align: center;
+	margin: auto;
+	width: 34%;
+	min-width: 30rem;
+	border: 2px solid black;
+	background: dimgray;
+	padding: 10px;
+}
+
+.second-part button {
+	margin-bottom: .5rem;
+}
+.content p {
 	font-style: italic;
 }
+
+.click {
+	font-weight: 900;
+}
+.mouse-over {
+	font-weight: 600;
+	color: red;
+}
+
