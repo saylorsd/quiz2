@@ -59,7 +59,13 @@
 
 		$('#get-button').html('Change It!');
 
+
+
 	});
+
+	$('.keep').on('click', function(){
+		document.cookie()
+	})
 
 
 })(jQuery);
